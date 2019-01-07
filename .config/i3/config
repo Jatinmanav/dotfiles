@@ -18,7 +18,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+shift+d exec --no-startup-id dmenu
 
 # change focus
 bindsym $mod+h focus left
@@ -52,8 +52,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle 
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -75,8 +74,8 @@ set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
+set $ws7 "7: "
+set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: "
 
@@ -109,7 +108,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # Lock i3
 bindsym $mod+Shift+x exec --no-startup-id i3lock -i /home/arch/.config/wall.png
 
@@ -132,22 +131,25 @@ bindsym $mod+s			gaps inner current plus 5
 bindsym $mod+Shift+s		gaps inner current minus 5 
 
 bindsym $mod+z			gaps outer current plus 5
-bindsym $mod+Shift+z		gaps outer current minus 5
-
+bindsym $mod+Shift+z		gaps outer current minus 5 
 
 # #---App Shortcuts---# #
 bindsym $mod+r 			exec --no-startup-id urxvt -e ranger
 bindsym $mod+y 			exec --no-startup-id urxvt -title youtube -e mpsyt 
 bindsym $mod+m 			exec --no-startup-id urxvt -title music -e cmus
-#bindsym $mod+ 			exec --no-startup-id urxvt -title -e
+bindsym $mod+w                  exec --no-startup-id firefox
+bindsym $mod+c 			exec --no-startup-id urxvt -title calendar -e calcurse
 #bindsym $mod+ 			exec --no-startup-id urxvt -title -e
 #bindsym $mod+ 			exec --no-startup-id urxvt -title -e
 
 
 # #---Workspaces---# #
 assign [class="Firefox"] $ws2
+assign [class="qutebrowser"] $ws2
 assign [title="youtube"] $ws5
 assign [title="music"] $ws10
+assign [title="calendar"] $ws8
+assign [class="jetbrains-studio"] $ws7
 
 # #---Starting External Scripts---# #
 # Setting the background:
@@ -158,6 +160,9 @@ exec --no-startup-id dunst
 exec --no-startup-id compton
 # Disk Automount:
 exec --no-startup-id udiskie
+# Calcurse:
+exec --no-startup-id urxvt -title calendar -e calcurse
+exec --no-startup-id urxvt
 
 
 # #---Media Keys---# #
@@ -168,3 +173,23 @@ bindsym XF86AudioMute		exec --no-startup-id  pactl set-sink-mute 0 toggle
 # #---Brightness Keys---# #
 bindsym XF86MonBrightnessDown	exec --no-startup-id light -U 10
 bindsym XF86MonBrightnessUp	exec --no-startup-id light -A 10
+
+
+# #---Power Menu---# #
+set $Locker i3lock -i /home/arch/.config/wall.png
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Delete mode "$mode_system"

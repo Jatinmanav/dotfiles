@@ -43,7 +43,7 @@ module-margin-right = 2
 
 modules-left = wlan eth battery volume light 
 modules-center = i3
-modules-right = temperature cpu date time  
+modules-right = temperature cpu date time 
 
 tray-position = right
 tray-padding = 2
@@ -71,7 +71,7 @@ label =  %percentage%%
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix =  
+format-prefix =  
 format-u= #f90000
 label = %percentage:2%%
 
@@ -91,7 +91,7 @@ interface = wlp7s0
 interval = 5
 
 label-connected =  %essid%
-label-disconnected =  Not Connected
+label-disconnected =  Not Connected
 
 [module/time]
 type = internal/date
@@ -155,5 +155,6 @@ format-warn = <label-warn>
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
 
 ; vim:ft=dosini
