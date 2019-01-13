@@ -150,6 +150,7 @@ assign [title="youtube"] $ws5
 assign [title="music"] $ws10
 assign [title="calendar"] $ws8
 assign [class="jetbrains-studio"] $ws7
+assign [class="jetbrains-idea-ce"] $ws3
 
 # #---Starting External Scripts---# #
 # Setting the background:
@@ -161,7 +162,7 @@ exec --no-startup-id compton
 # Disk Automount:
 exec --no-startup-id udiskie
 # Calcurse:
-exec --no-startup-id urxvt -title calendar -e calcurse
+# exec --no-startup-id urxvt -title calendar -e calcurse
 exec --no-startup-id urxvt
 
 
