@@ -21,11 +21,14 @@ alias Intellij="/home/arch/./intellij"
 alias intellij="Intellij && exit"
 alias Logout='i3-msg exit'
 alias Syllabus='nohup zathura ~/Desktop/Documents/B_Tech_CSE.pdf &'
-alias fxc='javac --module-path /home/arch/aur/java-openjfx-bin/src/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml'
-alias fxr='java --module-path /home/arch/aur/java-openjfx-bin/src/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml'
+alias fxc='javac --module-path /home/arch/open-jfx/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml'
+alias fxr='java --module-path /home/arch/open-jfx/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias p8='ping -c 3 8.8.8.8'
 
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
 # #---powerlevel9k customizations---# #
 ZSH_THEME="powerlevel9k/powerlevel9k"

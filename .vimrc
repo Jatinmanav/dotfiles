@@ -12,3 +12,7 @@ runtime! archlinux.vim
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Custom Shortcuts:
+        nnoremap j gj
+        nnoremap k gk

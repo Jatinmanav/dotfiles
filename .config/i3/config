@@ -137,7 +137,7 @@ bindsym $mod+Shift+z		gaps outer current minus 5
 bindsym $mod+r 			exec --no-startup-id urxvt -e ranger
 bindsym $mod+y 			exec --no-startup-id urxvt -title youtube -e mpsyt 
 bindsym $mod+m 			exec --no-startup-id urxvt -title music -e cmus
-bindsym $mod+w                  exec --no-startup-id qutebrowser
+bindsym $mod+w                  exec --no-startup-id firefox
 bindsym $mod+c 			exec --no-startup-id urxvt -title calendar -e calcurse
 bindsym $mod+Shift+m 		exec --no-startup-id spotify
 #bindsym $mod+i 			exec --no-startup-id urxvt -title intellij -e intellij
@@ -150,7 +150,7 @@ assign [class="jetbrains-idea-ce"] $ws3
 assign [title="youtube"] $ws5
 assign [class="jetbrains-studio"] $ws7
 assign [title="calendar"] $ws8
-assign [class="Spotify"] $ws9
+assign [class="spotify"] $ws9
 assign [title="music"] $ws10
 
 # #---Starting External Scripts---# #
